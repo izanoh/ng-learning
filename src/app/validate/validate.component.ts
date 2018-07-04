@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
 @Component({
   selector: 'app-validate',
   templateUrl: './validate.component.html',
@@ -6,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ValidateComponent implements OnInit {
 
-  constructor() { }
+  email: String;
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      selector: '',
+      name: '',
+      email: '',
+      message: 'default',
+
+    });
+
+    this.form.valueChanges.subscribe(console.log);
   }
 
 }
